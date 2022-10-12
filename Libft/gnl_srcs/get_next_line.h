@@ -1,49 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/12 01:11:53 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/12 23:53:30 by mravera          ###   ########.fr       */
+/*   Created: 2022/03/09 18:40:14 by mathis            #+#    #+#             */
+/*   Updated: 2022/10/08 13:59:20 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
+# include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include <unistd.h>
-# include <string.h>
-# include <fcntl.h>
-# include <mlx.h>
-# include "Libft/libft.h"
 
-typedef struct s_mlx
-{
-	void	*ptr;
-	void	*win;
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
-}	t_mlx;
-
-typedef struct s_img
-{
-	void	*ptr;
-	void	*pxl_ptr;
-	int		bpp;
-	int		lsize;
-	int		endian;
-	int		h;
-	int		l;
-}	t_img;
-
-typedef struct s_game
-{
-	char	**map;
-	int		x;
-	int		y;
-}	t_game;
+size_t			gnl_strlen(char *str);
+char			*gnl_strchr(char *s, int x);
+char			*gnl_strjoin(char *s1, char *s2);
+char			*get_next_line(int fd);
+char			*ft_get_line(char *frigo);
+char			*ft_save(char *frigo);
+char			*ft_read_and_save(int fd, char *frigo);
 
 #endif
