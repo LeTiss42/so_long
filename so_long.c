@@ -6,57 +6,24 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 15:21:16 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/12 23:50:12 by mravera          ###   ########.fr       */
+/*   Updated: 2022/10/13 23:50:30 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int	ft_close(void)
-{
-	exit(0);
-}
-
-void	sl_parsing(t_game *game, int argc, char **argv)
-{
-	int		fd;
-	char	*buffer;
-	int		i;
-
-	i = 0;
-	fd = open(argv[1], O_RDONLY);
-	buffer = get_next_line(fd);
-	while (buffer != NULL)
-	{
-		game->map[i] = malloc((ft_strlen(buffer) + 1) * sizeof(char));
-		ft_strlcpy(game->map[i], buffer, ft_strlen(buffer + 1));
-		buffer = get_next_line(fd);
-		i++;
-	}
-}
-
-void	sl_printftab(t_game game)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (game.map[i] != NULL)
-		ft_printf(game.map[i++]);
-}
 
 int	main(int argc, char **argv)
 {
 	t_mlx	mlx;
 	t_img	img;
 	t_game	game;
-	char	*line;
-	int		fd1;
 
 	if (argc != 2)
 		return (0);
-	sl_parsing(&game, argc, argv);
+	sl_check_filename(argv[1]);
+	check_size(&game, argv);
+	printf("game.size_x = %d\n", game.size_x);
+	printf("game.size_y = %d\n", game.size_y);
 	mlx.ptr = mlx_init();
 	if (mlx.ptr == NULL)
 		return (EXIT_FAILURE);

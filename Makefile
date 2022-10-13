@@ -6,12 +6,12 @@
 #    By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 00:59:15 by mravera           #+#    #+#              #
-#    Updated: 2022/10/12 16:48:56 by mravera          ###   ########.fr        #
+#    Updated: 2022/10/13 17:40:32 by mravera          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC := clang
-#CFLAGS := -Wall -Werror -Wextra
+CFLAGS := -Wall -Werror -Wextra
 LIBS := -lXext -lX11 -lmlx -lm -L Libft -lft
 RM := rm -f
 NAME := so_long

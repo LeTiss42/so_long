@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tblaase <tblaase@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 12:14:33 by tblaase           #+#    #+#             */
-/*   Updated: 2021/12/08 14:36:05 by tblaase          ###   ########.fr       */
+/*   Updated: 2022/10/13 17:40:58 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static void	ft_check_content(t_data *data)
 		ft_map_error("Error\nonly valid map if at least one coin is contained\n");
 }
 
-static void	ft_input_error(int	argc)
+static void	ft_input_error(int argc)
 /* only exists because of the 25 line limit */
 {
 	if (argc != 2)

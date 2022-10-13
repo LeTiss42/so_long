@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 01:11:53 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/12 23:53:30 by mravera          ###   ########.fr       */
+/*   Updated: 2022/10/13 23:50:09 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,18 @@ typedef struct s_img
 typedef struct s_game
 {
 	char	**map;
-	int		x;
-	int		y;
+	int		size_x;
+	int		size_y;
+	int		tot_x;
+	int		tot_y;
 }	t_game;
+
+//sl_parsing
+void	check_size(t_game *game, char **argv);
+void	sl_check_filename(char *filename);
+
+//utils
+void	sl_exit_nofree(char *text);
+int		ft_close(void);
 
 #endif
