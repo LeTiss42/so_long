@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 15:21:16 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/13 23:50:30 by mravera          ###   ########.fr       */
+/*   Updated: 2022/10/14 18:36:15 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ int	main(int argc, char **argv)
 	t_img	img;
 	t_game	game;
 
-	if (argc != 2)
-		return (0);
-	sl_check_filename(argv[1]);
-	check_size(&game, argv);
+	sl_check_args(&game, argc, argv);
 	printf("game.size_x = %d\n", game.size_x);
 	printf("game.size_y = %d\n", game.size_y);
 	mlx.ptr = mlx_init();

@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 01:11:53 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/13 23:50:09 by mravera          ###   ########.fr       */
+/*   Updated: 2022/10/14 18:35:47 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include <string.h>
 # include <fcntl.h>
-# include <mlx.h>
+# include "mlx/mlx.h"
 # include "Libft/libft.h"
 
 typedef struct s_mlx
@@ -48,12 +48,15 @@ typedef struct s_game
 	int		tot_y;
 }	t_game;
 
-//sl_parsing
-void	check_size(t_game *game, char **argv);
+//sl_check_args
+void	sl_check_args(t_game *game, int argc, char **argv);
 void	sl_check_filename(char *filename);
+void	sl_check_size_x(t_game *game, int fd);
+void	sl_check_size_y(t_game *game, int fd);
 
 //utils
 void	sl_exit_nofree(char *text);
+void	sl_perror(char *text);
 int		ft_close(void);
 
 #endif
