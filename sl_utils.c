@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 18:46:02 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/14 18:22:06 by mravera          ###   ########.fr       */
+/*   Updated: 2022/10/15 19:31:36 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,23 @@
 void	sl_exit_nofree(char *text)
 {
 	write(2, text, ft_strlen(text) + 1);
+	exit(EXIT_FAILURE);
+}
+
+void	sl_exit_free_map(t_game *game, char *text)
+{
+	int	x;
+
+	x = 0;
+	write(2, text, ft_strlen(text) + 1);
+	while (x < game->size_y)
+	{
+		free(game->map[x]);
+		x++ ;
+	}
+	free(game->map);
+	game->map = NULL;
+	printf("map ptr free = %p\n", game->map);
 	exit(EXIT_FAILURE);
 }
 

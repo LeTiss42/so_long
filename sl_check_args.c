@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 15:03:55 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/14 19:07:27 by mravera          ###   ########.fr       */
+/*   Updated: 2022/10/15 16:46:10 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,15 @@ void	sl_check_args(t_game *game, int argc, char **argv)
 	int	fd;
 
 	if (argc != 2)
-		sl_exit_nofree("Error\nNeed 1 argument :\nUsage : './so_long /map.ber'\n");
-	fd = open(argv[1], O_RDONLY);
+		sl_exit_nofree("Error\nNeed 1 argument\nUsage : './so_long /map.ber'\n");
 	sl_check_filename(argv[1]);
+	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 		sl_perror("Error\nCould not open the file.\n");
 	sl_check_size_x(game, fd);
 	sl_check_size_y(game, fd);
+	if (close(fd) == -1)
+		perror("Error\nCould not close open file\n");
 	return ;
 }
 
@@ -48,13 +50,13 @@ void	sl_check_size_x(t_game *game, int fd)
 	while (ret != 0 && buffer[0] != '\n')
 	{
 		if (ret == -1)
-			sl_perror("Error\nRead error.\n");
+			sl_perror("Error\nread() error.\n");
 		game->size_x ++;
 		ret = read(fd, buffer, 1);
 	}
 	ft_printf("x = %d", game ->size_x);
 	if (game->size_x < 3)
-		sl_exit_nofree("Error\nMap's length should be at least 3.\n");
+		sl_exit_nofree("Error\nMap's length should be at least 3 (line 1).\n");
 	if (buffer[0] == '\n')
 		game->size_y ++;
 	return ;
@@ -66,12 +68,10 @@ void	sl_check_size_y(t_game *game, int fd)
 	int		ret;
 
 	ret = read(fd, buffer, 1);
-	if (ret == -1)
-		sl_perror("Error\nRead error.\n");
 	while (ret != 0)
 	{
 		if (ret == -1)
-			sl_perror("Error\nRead error.\n");
+			sl_perror("Error\nread() error.\n");
 		if (buffer[0] == '\n')
 			game->size_y ++;
 		ret = read(fd, buffer, 1);

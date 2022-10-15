@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 01:11:53 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/14 18:35:47 by mravera          ###   ########.fr       */
+/*   Updated: 2022/10/15 19:10:43 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,13 @@ void	sl_check_filename(char *filename);
 void	sl_check_size_x(t_game *game, int fd);
 void	sl_check_size_y(t_game *game, int fd);
 
+//sl_parsing
+void	sl_parsing(t_game *game, char **argv);
+void	sl_check_rectangle(t_game *game);
+
 //utils
 void	sl_exit_nofree(char *text);
+void	sl_exit_free_map(t_game *game, char *text);
 void	sl_perror(char *text);
 int		ft_close(void);
 
