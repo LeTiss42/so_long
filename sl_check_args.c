@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 15:03:55 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/15 16:46:10 by mravera          ###   ########.fr       */
+/*   Updated: 2022/10/17 15:12:02 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ void	sl_check_size_y(t_game *game, int fd)
 		ret = read(fd, buffer, 1);
 	}
 	ft_printf("y = %d\n", game->size_y);
+	if (buffer[0] == '\n')
+		game->size_y --;
 	if (game->size_y < 3)
 		sl_exit_nofree("Error\nMap's height should be at least 3.\n");
 	return ;

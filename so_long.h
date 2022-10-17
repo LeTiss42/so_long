@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 01:11:53 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/15 19:10:43 by mravera          ###   ########.fr       */
+/*   Updated: 2022/10/17 17:34:04 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,17 @@
 # include <fcntl.h>
 # include "mlx/mlx.h"
 # include "Libft/libft.h"
+
+//keycode for MAC
+# define ESC 53
+# define ARROWUP 126
+# define ARROWDOWN 125
+# define ARROWLEFT 123
+# define ARROWRIGHT 124
+# define W 13
+# define A 0
+# define S 1
+# define D 2
 
 typedef struct s_mlx
 {
@@ -58,10 +69,14 @@ void	sl_check_size_y(t_game *game, int fd);
 void	sl_parsing(t_game *game, char **argv);
 void	sl_check_rectangle(t_game *game);
 
+//sl_key_press
+int		sl_key_press(int keycode, t_game *game);
+
 //utils
 void	sl_exit_nofree(char *text);
 void	sl_exit_free_map(t_game *game, char *text);
 void	sl_perror(char *text);
-int		ft_close(void);
+int		sl_close(t_game *game);
+int		sl_close_free_map(t_game *game);
 
 #endif
