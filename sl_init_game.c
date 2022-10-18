@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 19:43:17 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/18 22:21:57 by mravera          ###   ########.fr       */
+/*   Updated: 2022/10/19 00:42:07 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@ void	sl_init_game(t_mlx *mlx, t_game *game)
 {
 	game->tot_x = 64 * game->size_x;
 	game->tot_y = 64 * game->size_y;
-	game->door_state = 0;
-	game->player_state = 0;
+	game->d_s = 0;
+	game->p_s = 0;
 	game->move_cnt = 0;
+	game->next_mv = 0;
 	mlx->ptr = mlx_init();
 	if (mlx->ptr == NULL)
 		sl_exit_free_map(game, "Error\ncould not init mlx.\n");
@@ -40,7 +41,7 @@ void	sl_init_images(t_mlx *mlx, t_game *game)
 	char	*wall;
 	char	*coin;
 
-	floor = "textures/floor6464.xpm";
+	floor = "textures/floor.xpm";
 	wall = "textures/walls6464.xpm";
 	coin = "textures/coin6464.xpm";
 	game->sprites.floor.ptr = mlx_xpm_file_to_image(mlx->ptr, floor,

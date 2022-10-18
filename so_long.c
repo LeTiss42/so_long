@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 15:21:16 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/18 22:11:07 by mravera          ###   ########.fr       */
+/*   Updated: 2022/10/19 00:34:30 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,9 @@ int	main(int argc, char **argv)
 	}
 	sl_init_game(&mlx, &game);
 	mlx.mlxgame = &game;
+	mlx_loop_hook(mlx.ptr, sl_render_next_frame, &mlx);
 	mlx_hook(mlx.win, 17, 1L << 2, sl_close_all, &mlx);
 	mlx_hook(mlx.win, 2, 1L << 0, sl_key_press, &mlx);
-	mlx_put_image_to_window(mlx.ptr, mlx.win, game.sprites.wall.ptr, 0, 0);
-	mlx_put_image_to_window(mlx.ptr, mlx.win, game.sprites.floor.ptr, 0, 64);
-	mlx_put_image_to_window(mlx.ptr, mlx.win, game.sprites.coin.ptr, 0, 64);
 	mlx_loop(mlx.ptr);
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 01:11:53 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/18 21:56:21 by mravera          ###   ########.fr       */
+/*   Updated: 2022/10/19 01:07:58 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,11 @@ typedef struct s_game
 	int			c_cnt;
 	int			e_cnt;
 	int			p_cnt;
-	int			door_state;
-	int			player_state;
+	int			d_s;
+	int			p_s;
+	int			p_x;
+	int			p_y;
+	int			next_mv;
 	int			move_cnt;
 	t_sprites	sprites;
 }	t_game;
@@ -110,6 +113,24 @@ void	sl_init_images(t_mlx *mlx, t_game *game);
 void	sl_init_player_door(t_mlx *mlx, t_game *game);
 void	sl_check_sprites(t_game *game, t_mlx *mlx);
 void	sl_destroy_images(t_game *game, t_mlx *mlx);
+
+//sl_render_next_frame
+int		sl_render_next_frame(t_mlx *mlx);
+void	sl_render_walls(t_mlx *mlx);
+void	sl_render_door(t_mlx *mlx);
+void	sl_render_player(t_mlx *mlx);
+void	sl_render_floor(t_mlx *mlx);
+
+//sl_check_moves
+int		sl_checkmoves(t_mlx *mlx);
+void	sl_get_player_pos(t_mlx *mlx);
+void	sl_check_status(t_mlx *mlx);
+
+//sl_moves
+void	sl_move_up(t_mlx *mlx);
+void	sl_move_down(t_mlx *mlx);
+void	sl_move_left(t_mlx *mlx);
+void	sl_move_right(t_mlx *mlx);
 
 //utils
 void	sl_exit_nofree(char *text);
