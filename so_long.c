@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 15:21:16 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/17 17:40:04 by mravera          ###   ########.fr       */
+/*   Updated: 2022/10/18 19:17:59 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	main(int argc, char **argv)
 	while (game.map[i])
 		printf("%p\n", game.map[i++]);
 	printf("%p\n", game.map[i]);
-	sl_check_rectangle(&game);
 	mlx.ptr = mlx_init();
 	if (mlx.ptr == NULL)
 		return (EXIT_FAILURE);
