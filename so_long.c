@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 15:21:16 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/18 19:17:59 by mravera          ###   ########.fr       */
+/*   Updated: 2022/10/18 22:11:07 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,24 @@
 int	main(int argc, char **argv)
 {
 	t_mlx	mlx;
-	t_img	img;
 	t_game	game;
 	int		i;
 
 	i = 0;
 	sl_check_args(&game, argc, argv);
 	sl_parsing(&game, argv);
-	while (game.map[i])
-		printf("%p\n", game.map[i++]);
-	printf("%p\n", game.map[i]);
-	mlx.ptr = mlx_init();
-	if (mlx.ptr == NULL)
-		return (EXIT_FAILURE);
-	mlx.win = mlx_new_window(mlx.ptr, 640, 480, "Hello world");
-	if (mlx.win == NULL)
-		return (EXIT_FAILURE);
-	mlx_hook(mlx.win, 17, 1L << 2, sl_close, &game);
-	mlx_hook(mlx.win, 2, 1L << 0, sl_key_press, &game);
-	img.ptr = mlx_xpm_file_to_image(mlx.ptr, "./textures/floor6464.xpm", &img.l, &img.h);
-	mlx_put_image_to_window(mlx.ptr, mlx.win, img.ptr, 0, 0);
-	mlx_put_image_to_window(mlx.ptr, mlx.win, img.ptr, 64, 0);
+	while (i < game.size_y)
+	{
+		ft_printf("map[%d] = %p\n", i, game.map[i]);
+		i++;
+	}
+	sl_init_game(&mlx, &game);
+	mlx.mlxgame = &game;
+	mlx_hook(mlx.win, 17, 1L << 2, sl_close_all, &mlx);
+	mlx_hook(mlx.win, 2, 1L << 0, sl_key_press, &mlx);
+	mlx_put_image_to_window(mlx.ptr, mlx.win, game.sprites.wall.ptr, 0, 0);
+	mlx_put_image_to_window(mlx.ptr, mlx.win, game.sprites.floor.ptr, 0, 64);
+	mlx_put_image_to_window(mlx.ptr, mlx.win, game.sprites.coin.ptr, 0, 64);
 	mlx_loop(mlx.ptr);
 	return (EXIT_SUCCESS);
 }

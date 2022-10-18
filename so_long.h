@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 01:11:53 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/18 19:03:38 by mravera          ###   ########.fr       */
+/*   Updated: 2022/10/18 21:56:21 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,35 +45,47 @@
 # define S 115
 # define D 100
 
+typedef struct s_img
+{
+	void	*ptr;
+	int		w;
+	int		h;
+}	t_img;
+
+typedef struct s_sprites
+{
+	t_img	coin;
+	t_img	player_left;
+	t_img	player_right;
+	t_img	door_closed;
+	t_img	door_open;
+	t_img	wall;
+	t_img	floor;
+}	t_sprites;
+
+typedef struct s_game
+{
+	char		**map;
+	int			size_x;
+	int			size_y;
+	int			tot_x;
+	int			tot_y;
+	int			c_cnt;
+	int			e_cnt;
+	int			p_cnt;
+	int			door_state;
+	int			player_state;
+	int			move_cnt;
+	t_sprites	sprites;
+}	t_game;
+
 typedef struct s_mlx
 {
 	void	*ptr;
 	void	*win;
+	t_game	*mlxgame;
 
 }	t_mlx;
-
-typedef struct s_img
-{
-	void	*ptr;
-	void	*pxl_ptr;
-	int		bpp;
-	int		lsize;
-	int		endian;
-	int		h;
-	int		l;
-}	t_img;
-
-typedef struct s_game
-{
-	char	**map;
-	int		size_x;
-	int		size_y;
-	int		tot_x;
-	int		tot_y;
-	int		c_cnt;
-	int		e_cnt;
-	int		p_cnt;
-}	t_game;
 
 //sl_check_args
 void	sl_check_args(t_game *game, int argc, char **argv);
@@ -89,14 +101,21 @@ void	sl_check_cnt(t_game *game);
 void	sl_check_close(t_game *game);
 
 //sl_key_press
-int		sl_key_press(int keycode, t_game *game);
+int		sl_key_press(int keycode, t_mlx *mlx);
 int		sl_show_keycode(int keycode);
+
+//sl_init_game
+void	sl_init_game(t_mlx *mlx, t_game *game);
+void	sl_init_images(t_mlx *mlx, t_game *game);
+void	sl_init_player_door(t_mlx *mlx, t_game *game);
+void	sl_check_sprites(t_game *game, t_mlx *mlx);
+void	sl_destroy_images(t_game *game, t_mlx *mlx);
 
 //utils
 void	sl_exit_nofree(char *text);
 void	sl_exit_free_map(t_game *game, char *text);
 void	sl_perror(char *text);
-int		sl_close(t_game *game);
 int		sl_close_free_map(t_game *game);
+int		sl_close_all(t_mlx *mlx);
 
 #endif
