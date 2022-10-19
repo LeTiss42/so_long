@@ -6,7 +6,7 @@
 #    By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 00:59:15 by mravera           #+#    #+#              #
-#    Updated: 2022/10/19 20:44:21 by mravera          ###   ########.fr        #
+#    Updated: 2022/10/19 20:59:35 by mravera          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,17 @@ LIBS := -L mlx -lmlx -framework OpenGL -framework AppKit -lm -L Libft -lft
 RM := rm -f
 NAME := so_long
 
-SRCS := $(wildcard *.c)
+SRCS := sl_check_args.c \
+		sl_check_path.c \
+		sl_checkmoves.c \
+		sl_init_game.c \
+		sl_key_press.c \
+		sl_move.c \
+		sl_parsing.c \
+		sl_render.c \
+		sl_utils.c \
+		so_long.c
+
 OBJ := $(SRCS:%.c=%.o)
 
 all : $(NAME)
