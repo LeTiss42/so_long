@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 01:11:53 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/19 01:07:58 by mravera          ###   ########.fr       */
+/*   Updated: 2022/10/19 13:43:13 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include "mlx/mlx.h"
 # include "Libft/libft.h"
 
-/*
+
 //keycode for MAC
 # define ESC 53
 # define ARROWUP 126
@@ -32,8 +32,8 @@
 # define A 0
 # define S 1
 # define D 2
-*/
 
+/*
 //keycode for Ubuntu
 # define ESC 65307
 # define ARROWUP 65362
@@ -44,6 +44,7 @@
 # define A 97
 # define S 115
 # define D 100
+*/
 
 typedef struct s_img
 {

@@ -6,19 +6,19 @@
 #    By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 00:59:15 by mravera           #+#    #+#              #
-#    Updated: 2022/10/18 13:17:02 by mravera          ###   ########.fr        #
+#    Updated: 2022/10/19 13:41:43 by mravera          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CFLAGS := -Wall -Werror -Wextra
 
 #pour Linux
-CC := clang
-LIBS := -lXext -lX11 -lmlx -lm -L Libft -lft
+#CC := clang
+#LIBS := -lXext -lX11 -lmlx -lm -L Libft -lft
 
 #pour Mac
-#CC := gcc
-#LIBS := -L mlx -lmlx -framework OpenGL -framework AppKit -lm -L Libft -lft
+CC := gcc
+LIBS := -L mlx -lmlx -framework OpenGL -framework AppKit -lm -L Libft -lft
 
 RM := rm -f
 NAME := so_long

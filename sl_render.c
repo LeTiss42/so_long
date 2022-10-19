@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 22:58:16 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/19 01:08:12 by mravera          ###   ########.fr       */
+/*   Updated: 2022/10/19 14:03:00 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	sl_render_next_frame(t_mlx *mlx)
 {
 	sl_get_player_pos(mlx);
 	sl_check_status(mlx);
-	sl_render_walls(mlx);
 	sl_render_floor(mlx);
-	sl_render_door(mlx);
 	sl_render_player(mlx);
+	sl_render_walls(mlx);
+	sl_render_door(mlx);
 	return (1);
 }
 
@@ -123,7 +123,9 @@ void	sl_render_floor(t_mlx *mlx)
 	{
 		while (mlx->mlxgame->map[y][x])
 		{
-			if (mlx->mlxgame->map[y][x] == '0')
+			if (mlx->mlxgame->map[y][x] == '0'
+				|| mlx->mlxgame->map[y][x] == 'C'
+				|| mlx->mlxgame->map[y][x] == 'P')
 				mlx_put_image_to_window(mlx->ptr, mlx->win, floor_image,
 					x * 64, y * 64);
 		x ++;
