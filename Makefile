@@ -6,7 +6,7 @@
 #    By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 00:59:15 by mravera           #+#    #+#              #
-#    Updated: 2022/10/19 16:30:10 by mravera          ###   ########.fr        #
+#    Updated: 2022/10/19 20:44:21 by mravera          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,12 +29,17 @@ OBJ := $(SRCS:%.c=%.o)
 all : $(NAME)
 
 $(NAME) : $(OBJ)
+	$(MAKE) -C Libft
+	$(MAKE) -C mlx
 	$(CC) $(CFLAGS) $^ $(LIBS) -o $@
 
 clean :
+	$(MAKE) clean -C Libft
+	$(MAKE) clean -C mlx
 	$(RM) *.o
 
 fclean : clean
+	$(MAKE) fclean -C Libft
 	$(RM) $(NAME)
 
 re : fclean all
