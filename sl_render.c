@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 22:58:16 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/19 14:03:00 by mravera          ###   ########.fr       */
+/*   Updated: 2022/10/19 19:38:07 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,21 @@
 
 int	sl_render_next_frame(t_mlx *mlx)
 {
+	char	*c;
+	int		x;
+	int		y;
+
+	c = ft_itoa(mlx->mlxgame->move_cnt);
 	sl_get_player_pos(mlx);
+	x = mlx->mlxgame->p_x * 64 + 25;
+	y = mlx->mlxgame->p_y * 64 + 12;
 	sl_check_status(mlx);
 	sl_render_floor(mlx);
 	sl_render_player(mlx);
 	sl_render_walls(mlx);
 	sl_render_door(mlx);
+	mlx_string_put(mlx->ptr, mlx->win, x, y, 0x00FF0000, c);
+	free(c);
 	return (1);
 }
 

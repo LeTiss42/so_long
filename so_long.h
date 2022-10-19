@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 01:11:53 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/19 17:02:42 by mravera          ###   ########.fr       */
+/*   Updated: 2022/10/19 18:18:24 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ typedef struct s_game
 	int			c_cnt;
 	int			e_cnt;
 	int			p_cnt;
+	int			e_check;
+	int			c_check;
 	int			d_s;
 	int			p_s;
 	int			p_x;
@@ -119,6 +121,8 @@ void	sl_destroy_images(t_mlx *mlx);
 void	sl_check_path(t_game *game);
 char	**sl_dup_map(t_game *game);
 void	sl_display_tab(char **temp);
+void	sl_flood(char **grid, int i, int j, t_game *game);
+void	sl_free_dup(char **dup);
 
 //sl_render_next_frame
 int		sl_render_next_frame(t_mlx *mlx);
