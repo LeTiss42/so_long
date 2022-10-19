@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 01:11:53 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/19 13:43:13 by mravera          ###   ########.fr       */
+/*   Updated: 2022/10/19 17:02:42 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <fcntl.h>
 # include "mlx/mlx.h"
 # include "Libft/libft.h"
-
 
 //keycode for MAC
 # define ESC 53
@@ -107,13 +106,19 @@ void	sl_check_close(t_game *game);
 //sl_key_press
 int		sl_key_press(int keycode, t_mlx *mlx);
 int		sl_show_keycode(int keycode);
+void	sl_free_dup(char **dup);
 
 //sl_init_game
 void	sl_init_game(t_mlx *mlx, t_game *game);
 void	sl_init_images(t_mlx *mlx, t_game *game);
 void	sl_init_player_door(t_mlx *mlx, t_game *game);
 void	sl_check_sprites(t_game *game, t_mlx *mlx);
-void	sl_destroy_images(t_game *game, t_mlx *mlx);
+void	sl_destroy_images(t_mlx *mlx);
+
+//sl_check_path
+void	sl_check_path(t_game *game);
+char	**sl_dup_map(t_game *game);
+void	sl_display_tab(char **temp);
 
 //sl_render_next_frame
 int		sl_render_next_frame(t_mlx *mlx);

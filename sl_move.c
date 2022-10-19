@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 23:55:58 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/19 01:35:42 by mravera          ###   ########.fr       */
+/*   Updated: 2022/10/19 17:04:33 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	sl_move_up(t_mlx *mlx)
 		mlx->mlxgame->map[mlx->mlxgame->p_y + 1][mlx->mlxgame->p_x] = '0';
 		mlx->mlxgame->map[mlx->mlxgame->p_y][mlx->mlxgame->p_x] = 'P';
 		mlx->mlxgame->move_cnt ++;
-		ft_printf("Nombre de mouvements = %d pieces manquantes = %d\n",
+		ft_printf("Nombre de mouvements = %d || Pieces manquantes = %d\n",
 			mlx->mlxgame->move_cnt, mlx->mlxgame->c_cnt);
 	}
 	mlx->mlxgame->next_mv = 0;
@@ -48,7 +48,7 @@ void	sl_move_down(t_mlx *mlx)
 		mlx->mlxgame->map[mlx->mlxgame->p_y - 1][mlx->mlxgame->p_x] = '0';
 		mlx->mlxgame->map[mlx->mlxgame->p_y][mlx->mlxgame->p_x] = 'P';
 		mlx->mlxgame->move_cnt ++;
-		ft_printf("Nombre de mouvements = %d pieces manquantes = %d\n",
+		ft_printf("Nombre de mouvements = %d || Pieces manquantes = %d\n",
 			mlx->mlxgame->move_cnt, mlx->mlxgame->c_cnt);
 	}
 	mlx->mlxgame->next_mv = 0;
@@ -70,7 +70,7 @@ void	sl_move_left(t_mlx *mlx)
 		mlx->mlxgame->map[mlx->mlxgame->p_y][mlx->mlxgame->p_x] = 'P';
 		mlx->mlxgame->p_s = 0;
 		mlx->mlxgame->move_cnt ++;
-		ft_printf("Nombre de mouvements = %d pieces manquantes = %d\n",
+		ft_printf("Nombre de mouvements = %d || Pieces manquantes = %d\n",
 			mlx->mlxgame->move_cnt, mlx->mlxgame->c_cnt);
 	}
 	mlx->mlxgame->next_mv = 0;
@@ -92,7 +92,7 @@ void	sl_move_right(t_mlx *mlx)
 		mlx->mlxgame->map[mlx->mlxgame->p_y][mlx->mlxgame->p_x] = 'P';
 		mlx->mlxgame->p_s = 1;
 		mlx->mlxgame->move_cnt ++;
-		ft_printf("Nombre de mouvements = %d pieces manquantes = %d\n",
+		ft_printf("Nombre de mouvements = %d || Pieces manquantes = %d\n",
 			mlx->mlxgame->move_cnt, mlx->mlxgame->c_cnt);
 	}
 	mlx->mlxgame->next_mv = 0;

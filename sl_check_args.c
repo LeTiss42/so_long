@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 15:03:55 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/17 15:12:02 by mravera          ###   ########.fr       */
+/*   Updated: 2022/10/19 16:34:34 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	sl_check_size_x(t_game *game, int fd)
 		game->size_x ++;
 		ret = read(fd, buffer, 1);
 	}
-	ft_printf("x = %d", game ->size_x);
 	if (game->size_x < 3)
 		sl_exit_nofree("Error\nMap's length should be at least 3 (line 1).\n");
 	if (buffer[0] == '\n')
@@ -76,7 +75,6 @@ void	sl_check_size_y(t_game *game, int fd)
 			game->size_y ++;
 		ret = read(fd, buffer, 1);
 	}
-	ft_printf("y = %d\n", game->size_y);
 	if (buffer[0] == '\n')
 		game->size_y --;
 	if (game->size_y < 3)

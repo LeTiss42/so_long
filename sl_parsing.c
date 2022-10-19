@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 17:43:12 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/18 22:21:23 by mravera          ###   ########.fr       */
+/*   Updated: 2022/10/19 16:32:54 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,9 @@ void	sl_parsing(t_game *game, char **argv)
 	if (fd < 0)
 		sl_perror("Error\nCould not open the file.\n");
 	game->map = ft_calloc(game->size_y + 1, sizeof(char *));
-	ft_printf("game->map = %p\n", game->map);
 	while (x < game->size_y)
 	{
 		game->map[x] = get_next_line(fd);
-		ft_printf("game->map[%d] = %p\n", x, game->map[x]);
 		x++;
 	}
 	if (close(fd) == -1)
@@ -54,7 +52,6 @@ void	sl_check_rectangle(t_game *game)
 			i++ ;
 			x++ ;
 		}
-		printf("game[%d] = %s\n", y, game->map[y]);
 		if (i != game->size_x)
 			sl_exit_free_map(game, "Error\nMap must be rectangular.\n");
 		y++ ;
@@ -95,7 +92,6 @@ void	sl_check_char(t_game *game)
 
 void	sl_check_cnt(t_game *game)
 {
-	ft_printf("P = %d\nE = %d\nC = %d\n", game->p_cnt, game->e_cnt, game->c_cnt);
 	if (game->p_cnt != 1)
 		sl_exit_free_map(game, "Error\nNeed 1 player.\n");
 	else if (game->e_cnt != 1)

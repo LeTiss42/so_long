@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 15:21:16 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/19 00:34:30 by mravera          ###   ########.fr       */
+/*   Updated: 2022/10/19 16:29:27 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,7 @@ int	main(int argc, char **argv)
 	i = 0;
 	sl_check_args(&game, argc, argv);
 	sl_parsing(&game, argv);
-	while (i < game.size_y)
-	{
-		ft_printf("map[%d] = %p\n", i, game.map[i]);
-		i++;
-	}
+	sl_check_path(&game);
 	sl_init_game(&mlx, &game);
 	mlx.mlxgame = &game;
 	mlx_loop_hook(mlx.ptr, sl_render_next_frame, &mlx);

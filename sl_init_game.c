@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 19:43:17 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/19 00:42:07 by mravera          ###   ########.fr       */
+/*   Updated: 2022/10/19 15:58:47 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,14 +90,14 @@ void	sl_check_sprites(t_game *game, t_mlx *mlx)
 	return ;
 }
 
-void	sl_destroy_images(t_game *game, t_mlx *mlx)
+void	sl_destroy_images(t_mlx *mlx)
 {
-	mlx_destroy_image(mlx, game->sprites.coin.ptr);
-	mlx_destroy_image(mlx, game->sprites.player_left.ptr);
-	mlx_destroy_image(mlx, game->sprites.player_right.ptr);
-	mlx_destroy_image(mlx, game->sprites.door_closed.ptr);
-	mlx_destroy_image(mlx, game->sprites.door_open.ptr);
-	mlx_destroy_image(mlx, game->sprites.wall.ptr);
-	mlx_destroy_image(mlx, game->sprites.floor.ptr);
+	mlx_destroy_image(mlx, mlx->mlxgame->sprites.coin.ptr);
+	mlx_destroy_image(mlx, mlx->mlxgame->sprites.player_left.ptr);
+	mlx_destroy_image(mlx, mlx->mlxgame->sprites.player_right.ptr);
+	mlx_destroy_image(mlx, mlx->mlxgame->sprites.door_closed.ptr);
+	mlx_destroy_image(mlx, mlx->mlxgame->sprites.door_open.ptr);
+	mlx_destroy_image(mlx, mlx->mlxgame->sprites.wall.ptr);
+	mlx_destroy_image(mlx, mlx->mlxgame->sprites.floor.ptr);
 	return ;
 }

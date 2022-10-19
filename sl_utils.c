@@ -6,7 +6,7 @@
 /*   By: mravera <mravera@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 18:46:02 by mravera           #+#    #+#             */
-/*   Updated: 2022/10/18 22:25:37 by mravera          ###   ########.fr       */
+/*   Updated: 2022/10/19 16:28:59 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,11 @@ int	sl_close_all(t_mlx *mlx)
 	ft_printf("Shutting down...\n");
 	while (x < mlx->mlxgame->size_y)
 	{
-		ft_printf("free game[%d] = %p\n", x, mlx->mlxgame->map[x]);
 		free(mlx->mlxgame->map[x]);
 		x ++;
 	}
-	ft_printf("free map = %p\n", mlx->mlxgame->map);
 	free(mlx->mlxgame->map);
-	ft_printf("free mlx = %p\n", mlx->ptr);
-	free(mlx->ptr);
-	ft_printf("free win = %p\n", mlx->win);
-	free(mlx->win);
+	mlx_destroy_window(mlx->ptr, mlx->win);
 	exit(EXIT_SUCCESS);
 	return (1);
 }
